@@ -118,9 +118,50 @@ class RollDiceTest {
 	
 	@Test
 	void testSmallStraight2() {
-		int[] array = {1,2,3,4,5};
+		int[] array = {5,3,2,4,1};
 		assertEquals(15, RollDice.yahtzee(array, "small straight"));
 		System.out.println(RollDice.yahtzee(array, "small straight"));
 	}
 	
+	@Test
+	void testLargeStraight1() {
+		int[] array = {2,3,4,5,6};
+		assertEquals(20, RollDice.yahtzee(array, "large straight"));
+		System.out.println(RollDice.yahtzee(array, "large straight"));
+	}
+	
+	@Test
+	void testLargeStraight2() {
+		int[] array = {2,3,4,5,3};
+		assertEquals(0, RollDice.yahtzee(array, "large straight"));
+		System.out.println(RollDice.yahtzee(array, "large straight"));
+	}
+	
+	@Test
+	void testFullHouse1() {
+		int[] array = {2,2,4,4,4};
+		assertEquals(16, RollDice.yahtzee(array, "full house"));
+		System.out.println(RollDice.yahtzee(array, "full house"));
+	}
+	
+	@Test
+	void testFullHouse2() {
+		int[] array = {2,2,4,4,3};
+		assertEquals(0, RollDice.yahtzee(array, "full house"));
+		System.out.println(RollDice.yahtzee(array, "full house"));
+	}
+	
+	@Test
+	void testChance1() {
+		int[] array = {1,2,3,4,4};
+		assertEquals(14, RollDice.yahtzee(array, "chance"));
+		System.out.println(RollDice.yahtzee(array, "chance"));
+	}
+	
+	@Test
+	void testChance2() {
+		int[] array = {5,3,1,4,4};
+		assertEquals(17, RollDice.yahtzee(array, "chance"));
+		System.out.println(RollDice.yahtzee(array, "chance"));
+	}
 }

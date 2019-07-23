@@ -78,16 +78,6 @@ public class RollDice {
 			return 2 * x;
 		}
 
-		if (category.equalsIgnoreCase("pair")) {
-			int x = 0;
-			for (int i = 1; i <= 6; i++) {
-				if (diceCount(dice, i) >= 2) {
-					x = i;
-				}
-			}
-			return 2 * x;
-		}
-
 		if (category.equalsIgnoreCase("two pair")) {
 			int x = 0;
 			int y = 0;
@@ -135,6 +125,45 @@ public class RollDice {
 				return 0;
 			}
 		}
+		
+		if (category.equalsIgnoreCase("large straight")) {
+			int x = 0;
+			for (int i = 2; i <= 6; i++) {
+				if (diceCount(dice, i) == 1) {
+					x++;
+				}
+			}
+			if(x == 5) {
+				return 20;
+			} else {
+				return 0;
+			}
+		}
+		
+		if (category.equalsIgnoreCase("full house")) {
+			int x = 0;
+			int y = 0;
+			for (int i = 1; i <= 6; i++) {
+				for (int j = 1; j <= 6; j++) {
+					if (diceCount(dice, i) >= 2 && diceCount(dice, j) >= 3 && i != j) {
+						x = i;
+						y = j;
+					}
+				}
+			}
+			return (2 * x) + (3 * y);
+		}
+		
+		if (category.equalsIgnoreCase("chance")) {
+			int x = 0;
+			for (int i = 0; i < 5; i++) {
+				x += dice[i];
+			} 
+			return x;
+		}
+
+		
+		
 		
 		return 0;
 	}
